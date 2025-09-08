@@ -29,5 +29,13 @@ public class StudentControllerImpl implements IStudentController {
         return  studentService.getAllStudents();
     }
 
+    @GetMapping(path = "/{id}")
+    @Override
+    public Student getStudentById(@PathVariable(name = "id") int id) {
+
+        return studentService.getStudentById(id);
+    }
+
+
 
 }
