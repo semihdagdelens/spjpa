@@ -31,11 +31,22 @@ public class StudentControllerImpl implements IStudentController {
 
     @GetMapping(path = "/{id}")
     @Override
-    public Student getStudentById(@PathVariable(name = "id") int id) {
+    public Student getStudentById(@PathVariable(name = "id") Integer id) {
 
         return studentService.getStudentById(id);
     }
 
+    @DeleteMapping(path = "/delete/{id}")
+    @Override
+    public void deleteStudent(@PathVariable(name = "id") Integer id) {
+        studentService.deleteStudent(id);
+    }
+
+    @PutMapping("/update/{id}")
+    @Override
+    public Student updateStudent(@PathVariable(name = "id") Integer id, @RequestBody Student updatedStudent) {
+        return studentService.updateStudent(id,updatedStudent);
+    }
 
 
 }
