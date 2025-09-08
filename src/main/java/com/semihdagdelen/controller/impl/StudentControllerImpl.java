@@ -1,6 +1,8 @@
 package com.semihdagdelen.controller.impl;
 
 import com.semihdagdelen.controller.IStudentController;
+import com.semihdagdelen.dto.DtoStudent;
+import com.semihdagdelen.dto.DtoStudentIU;
 import com.semihdagdelen.entity.Student;
 import com.semihdagdelen.service.IStudentService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,8 +21,8 @@ public class StudentControllerImpl implements IStudentController {
     //normalde dto kullanılır
     @PostMapping(path = "/save")
     @Override
-    public Student saveStudent(@RequestBody Student student) {
-        return studentService.saveStudent(student);
+    public DtoStudent saveStudent(@RequestBody DtoStudentIU dtoStudentIU) {
+        return studentService.saveStudent(dtoStudentIU);
     }
 
     @GetMapping(path = "/list")

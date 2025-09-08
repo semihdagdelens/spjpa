@@ -1,15 +1,15 @@
 package com.semihdagdelen.controller;
 
-import com.semihdagdelen.controller.impl.StudentControllerImpl;
+import com.semihdagdelen.dto.DtoStudent;
+import com.semihdagdelen.dto.DtoStudentIU;
 import com.semihdagdelen.entity.Student;
 import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
 
 import java.util.List;
 
 public interface IStudentController {
 
-    public Student saveStudent(Student student);
+    public DtoStudent saveStudent(DtoStudentIU dtoStudentIU);
     public List<Student> getAllStudents();
     public Student getStudentById(@PathVariable(name = "id") Integer id);
     public void deleteStudent(Integer id);

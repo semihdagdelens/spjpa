@@ -1,8 +1,11 @@
 package com.semihdagdelen.service.impl;
 
+import com.semihdagdelen.dto.DtoStudent;
+import com.semihdagdelen.dto.DtoStudentIU;
 import com.semihdagdelen.entity.Student;
 import com.semihdagdelen.repository.StudentRepository;
 import com.semihdagdelen.service.IStudentService;
+import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -18,9 +21,16 @@ public class StudentServiceImpl implements IStudentService{
     private StudentRepository studentRepository;
 
     @Override
-    public Student saveStudent(Student student) {
-        return studentRepository.save(student);
+    public DtoStudent saveStudent(DtoStudentIU dtoStudentIU) {
+        DtoStudent response = new DtoStudent();
+        Student student = new Student();
+        BeanUtils.copyProperties(dtoStudentIU, student);
+
+        Student dbStudent = studentRepository.save(student);
+        BeanUtils.copyProperties(dbStudent, response);
+        return response;
     }
+
 
     @Override
     public List<Student> getAllStudents() {
